@@ -1,0 +1,94 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  email     String     @unique
+  password  String
+  name      String
+  createdAt DateTime   @default(now())
+  role      String
+  FeedBack  FeedBack[]
+  Order     Order[]
+  Address   Address[]
+}
+
+model Address {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  city       String
+  country    String
+  Address    String
+  postalCode String
+  province   String
+  phone      String
+  userId     String? @db.ObjectId
+  user       User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Order      Order[]
+}
+
+type Image {
+  public_id  String
+  secure_url String
+}
+
+model Product {
+  id              String          @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  Images          Image[]
+  rating          Float
+  Feedback        FeedBack[]
+  Order           Order[]
+  price           Int
+  category        Category[]
+  Quantity        Int
+  colorsAvailable String[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  OrdersProduct   OrdersProduct[]
+}
+
+model Category {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String   @unique
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?  @db.ObjectId
+}
+
+model FeedBack {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String?  @db.ObjectId
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?  @db.ObjectId
+}
+
+model OrdersProduct {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  Product      Product? @relation(fields: [productId], references: [id])
+  productId    String?  @db.ObjectId
+  ProductPrice Int
+  Quantity     Int
+  Order        Order?   @relation(fields: [orderId], references: [id])
+  orderId      String?  @db.ObjectId
+}
+
+model Order {
+  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String?         @db.ObjectId
+  user        User?           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Orders      OrdersProduct[]
+  AddressId   String?         @db.ObjectId
+  Address     Address?        @relation(fields: [AddressId], references: [id], onDelete: Cascade)
+  Product     Product?        @relation(fields: [productId], references: [id])
+  productId   String?         @db.ObjectId
+  totalPrice  Int
+  status      String          @default("Proccessing")
+  deliveredAt DateTime
+  createdAt   DateTime        @default(now())
+}
