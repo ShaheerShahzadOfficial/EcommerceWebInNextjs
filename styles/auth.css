@@ -1,0 +1,3 @@
+.auth-input {
+  @apply w-full outline-none border-b-2 border-b-gray-200  focus:border-b-gray-700 duration-300 h-10 font-medium text-[#17c6e1];
+}
