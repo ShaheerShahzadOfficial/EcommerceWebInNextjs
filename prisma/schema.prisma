@@ -7,6 +7,13 @@ generator client {
   provider = "prisma-client-js"
 }
 
+
+type Image {
+  public_id  String
+  secure_url String
+}
+
+
 model User {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
   email     String     @unique
@@ -14,6 +21,7 @@ model User {
   name      String
   createdAt DateTime   @default(now())
   role      String
+  Profile   Image?
   FeedBack  FeedBack[]
   Order     Order[]
   Address   Address[]
@@ -30,11 +38,6 @@ model Address {
   userId     String? @db.ObjectId
   user       User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   Order      Order[]
-}
-
-type Image {
-  public_id  String
-  secure_url String
 }
 
 model Product {
