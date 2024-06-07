@@ -44,7 +44,7 @@ export default function Login() {
           </Link>
 
           <div className="w-[80%] mt-10 flex flex-col items-center justify-around ">
-            <button className="text-lg font-bold w-full rounded-full p-3 text-white bg-black">
+            <button className="text-lg font-bold w-full rounded-sm p-3 text-white bg-gradient-to-r from-green-400 to-cyan-600 hover:from-cyan-600 hover:to-green-400">
               LOGIN
             </button>
           </div>
