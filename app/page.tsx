@@ -15,12 +15,12 @@ const Home = () => {
   });
 
   return (
-    <main className="flex items-center justify-center w-full min-h-full ">
-      <div className="flex flex-wrap w-full max-w-full self-center p-4 items-center justify-center">
+    <main className="flex items-start justify-center w-full min-h-full ">
+      <div className="flex flex-wrap max-w-full justify-center mx-2 my-auto">
         {array.map((item, i) => (
           <div
             key={i}
-            className="drop-shadow-xl	 w-80 m-5 rounded-xl pb-4 items-center justify-center flex flex-col duration-700 bg-white hover:scale-105 hover:transform-gpu"
+            className="drop-shadow-xl	 w-72 m-3 rounded-xl pb-4 p-2 self-start items-center justify-center flex flex-col duration-700 bg-white hover:scale-105 hover:transform-gpu"
           >
             <Link
               href={`/product/${i}`}
@@ -29,7 +29,7 @@ const Home = () => {
               <img
                 src={item.img}
                 alt={item.name}
-                className="w-full h-80 mb-3  resize-none  rounded-t-xl"
+                className="w-full h-72 mb-3  resize-none  rounded-t-xl"
               />
               <p className="text-lg px-2 w-[90%] text-green-700 text-left font-extrabold my-3">
                 {item.name}
@@ -40,7 +40,7 @@ const Home = () => {
             </Link>
             <div className="flex lg:flex-row w-[90%] items-center justify-between px-2 flex-col">
               <p className="w-[40%] text-center text-cyan-600 font-bold text-lg md:my-0 my-2 md:text-left">{`$ ${item.price}`}</p>
-              <button className="bg-gradient-to-r from-green-400 to-cyan-600 p-2  sm:w-[70%] rounded-sm text-white font-semibold text-sm font-sans flex items-center justify-center w-[100%]">
+              <button className="bg-gradient-to-r from-green-400 to-cyan-600 p-2  lg:w-[70%] rounded-sm text-white font-semibold text-sm font-sans flex items-center justify-center w-[100%]">
                 <div className="flex mr-2 items-center justify-evenly">
                   <MdOutlineAdd />
                   <RiShoppingBag2Fill />

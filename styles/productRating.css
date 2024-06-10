@@ -1,0 +1,23 @@
+.ProductRating input {
+    display: none;
+  }
+  
+  .ProductRating label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+  }
+  
+  .ProductRating label:before {
+    content: "\2605";
+    font-size: 2rem;
+  }
+  
+  .ProductRating input:checked ~ label,
+  .ProductRating label:hover,
+  .ProductRating label:hover ~ label {
+    color: rgb(21, 128, 61);
+    transition: color 0.3s;
+  }
+  

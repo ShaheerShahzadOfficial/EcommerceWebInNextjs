@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "@/styles/rating.css";
-const Rating = () => {
-  const [rating, setRating] = useState<Number>(0);
+import "@/styles/productRating.css";
+const ProductRating = ({ className }: { className?: string }) => {
+  const [Rating, setRating] = useState<number>(0);
 
   const handleRatingChange = (event: any) => {
     setRating(Number(event.target.value));
@@ -9,13 +9,13 @@ const Rating = () => {
   };
 
   return (
-    <div className="rating">
+    <div className={`ProductRating ${className}`}>
       <input
         value="5"
         name="rating"
         id="star5"
         type="radio"
-        checked={rating === 5}
+        checked={Rating === 5}
         onChange={handleRatingChange}
       />
       <label htmlFor="star5"></label>
@@ -25,7 +25,7 @@ const Rating = () => {
         name="rating"
         id="star4"
         type="radio"
-        checked={rating === 4}
+        checked={Rating === 4}
         onChange={handleRatingChange}
       />
       <label htmlFor="star4"></label>
@@ -35,7 +35,7 @@ const Rating = () => {
         name="rating"
         id="star3"
         type="radio"
-        checked={rating === 3}
+        checked={Rating === 3}
         onChange={handleRatingChange}
       />
       <label htmlFor="star3"></label>
@@ -45,7 +45,7 @@ const Rating = () => {
         name="rating"
         id="star2"
         type="radio"
-        checked={rating === 2}
+        checked={Rating === 2}
         onChange={handleRatingChange}
       />
       <label htmlFor="star2"></label>
@@ -55,7 +55,7 @@ const Rating = () => {
         name="rating"
         id="star1"
         type="radio"
-        checked={rating === 1}
+        checked={Rating === 1}
         onChange={handleRatingChange}
       />
       <label htmlFor="star1"></label>
@@ -63,4 +63,4 @@ const Rating = () => {
   );
 };
 
-export default Rating;
+export default ProductRating;
