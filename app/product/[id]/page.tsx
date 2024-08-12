@@ -92,7 +92,7 @@ const ProductDetail = () => {
             itaque exercitationem ea velit mollitia illo.
           </p>
 
-          <ProductRating className="justify-center sm:justify-normal sm:items-center flex flex-row-reverse sm:w-[9.2rem] sm:self-start w-full sm:inline-block" />
+          <ProductRating className="justify-center sm:justify-normal sm:items-center flex flex-row-reverse sm:w-[8.6rem] sm:self-start w-full sm:inline-block" />
 
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between md:w-96 w-full">
             <div className="flex self-center items-center w-36 justify-between my-2">
@@ -177,7 +177,7 @@ const ProductDetail = () => {
         </h1>
 
         <div className="flex flex-row justify-center items-center sm:w-[90%] w-full">
-          <div className="flex overflow-x-auto overflow-y-clip w-full items-center">
+          <div className="flex overflow-x-auto overflow-y-clip w-full items-center justify-center">
             {ProductArray.map((item, i) => (
               <div
                 key={i}
